@@ -1,0 +1,115 @@
+---
+layout: post
+title:  "ＭarkDown語法Copy字典"
+date:   2020-03-30 15:01:18 +0800
+categories: jekyll update
+---
+編號階層
+
+1. 第一層：
+    - 第二層
+        * 第三層
+
+{% highlight ruby %}
+＃可使用* ,+ ,- 
+1. 第一層：
+    - 第二層
+        * 第三層
+{% endhighlight %}
+
+換行  
+{% highlight ruby %}
+按下兩次空格
+{% endhighlight %}
+
+*斜體*  
+{% highlight ruby %}
+*文字*
+{% endhighlight %}
+
+**粗體**  
+{% highlight ruby %}
+**文字**
+{% endhighlight %}
+
+***粗體+斜體***  
+{% highlight ruby %}
+***文字***
+{% endhighlight %}
+
+~~刪除線~~
+{% highlight ruby %}
+~~文字~~
+{% endhighlight %}
+
+# This is an H1
+{% highlight ruby %}
+# 文字
+{% endhighlight %}
+
+## This is an H2
+{% highlight ruby %}
+## 文字
+{% endhighlight %}
+
+超連結  
+[連結標題](https://ivanli.nctu.me/)
+{% highlight ruby %}
+[連結標題](https://ivanli.nctu.me/)
+{% endhighlight %}
+
+嵌入圖片  
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/pic.jpg)  
+{% highlight ruby %}
+＃再_posts裡建立圖片資料夾並將圖片放入上傳至git,再輸入路徑
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/pic.jpg)
+{% endhighlight %}
+
+>文字內容
+>>縮行
+>>>縮行
+(以此類推)
+{% highlight ruby %}
+>文字內容
+>>縮行
+>>>縮行
+{% endhighlight %}
+
+表格  
+
+| 姓名|性别|年龄|國籍|null|
+| ---- | ---- |----| ---- | ---- |       
+| Ivan| 男 |27| 台灣| null|     
+| Li| 男 |null|null|null|
+{% highlight ruby %}
+| 姓名|性别|年龄|國籍|null|
+| ---- | ---- |----| ---- | ---- |       
+| Ivan| 男 |27| 台灣| null|     
+| Li| 男 |null|null|null|
+{% endhighlight %}
+
+任務列表語法介紹
+- [ ] A任務
+- [ ] B任務
+- [x] C任務
+- [ ] D任務
+{% highlight ruby %}
+- [ ] A任務
+- [ ] B任務
+- [x] C任務
+- [ ] D任務
+{% endhighlight %}
+
+標註說明:註1[^test]。  
+
+[^test]: 說明一
+
+{% highlight ruby %}
+標註說明:註1[^test]。  
+
+[^test]: 說明一
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

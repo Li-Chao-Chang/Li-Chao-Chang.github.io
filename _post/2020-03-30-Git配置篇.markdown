@@ -1,0 +1,63 @@
+---
+layout: post
+title:  "Git Cheat Sheet配置篇"
+date:   2020-03-30 14:00:21 +0800
+categories: jekyll update
+---
+Git目前配置：
+{% highlight ruby %}
+git config --list
+{% endhighlight %}
+
+Git repository配置：
+{% highlight ruby %}
+git config --local --list
+{% endhighlight %}
+
+Git全域性配置：
+{% highlight ruby %}
+git config --global --list
+{% endhighlight %}
+
+Ｇit系統配置：
+{% highlight ruby %}
+git config --system --list
+{% endhighlight %}
+
+設定使用者名稱：
+{% highlight ruby %}
+git config --global user.name "[firstname lastname]"
+{% endhighlight %}
+
+設定使用者郵箱：
+{% highlight ruby %}
+git config --global user.email "[valid-email]"
+{% endhighlight %}
+
+設定git命令輸出為彩色：
+{% highlight ruby %}
+git config --global color.ui
+{% endhighlight %}
+
+設定git使用的文字編輯器設：
+{% highlight ruby %}
+git config --global core.editor vi
+{% endhighlight %}
+
+通過 SSH
+{% highlight ruby %}
+git clone ssh://user@xxx.com/repo.git
+{% endhighlight %}
+通過 HTTP
+{% highlight ruby %}
+git clone http://xxx.com/user/repo.git
+{% endhighlight %}
+
+初始化
+{% highlight ruby %}
+git init
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

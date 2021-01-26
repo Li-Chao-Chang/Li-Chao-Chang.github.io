@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "C#憑證綁定"
+date:   2020-04-16 10:30:21 +0800
+categories: jekyll update
+---
+<font color="#0473E2" id='1'>C#憑證綁定</font>  
+通過路徑取得實體憑證的Issuer(簽發單位)來進行憑證驗證   
+{% highlight ruby %}
+ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)768 | SecurityProtocolType.Tls;
+ServicePointManager.ServerCertificateValidationCallback += (o, c, ch, er) => {
+    if (er == System.Net.Security.SslPolicyErrors.None)
+    {
+        string cerFile = "xxxx.crt";
+        string cerPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), cerFile);
+        X509Certificate2 cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(cerPath, "", X509KeyStorageFlags.MachineKeySet);
+        if (cert != null)
+        {
+            if (cert.Issuer == c.Issuer)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    return false;
+};
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

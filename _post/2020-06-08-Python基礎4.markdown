@@ -1,0 +1,104 @@
+---
+layout: post
+title:  "Python基礎4"
+date:   2020-06-08 11:33:21 +0800
+categories: jekyll update
+---
+```python
+mydic ={'A':100,'B':200}
+```
+
+
+```python
+mydic
+```
+
+
+
+
+    {'A': 100, 'B': 200}
+
+
+
+
+```python
+mydic['C']=300
+```
+
+
+```python
+mydic
+```
+
+
+
+
+    {'A': 100, 'B': 200, 'C': 300}
+
+
+
+
+```python
+for key in mydic:
+    print("{}:{}".format(key,mydic[key]))
+```
+
+    A:100
+    B:200
+    C:300
+
+
+
+```python
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+
+```python
+from ipywidgets import interact
+```
+
+
+```python
+def f(x):
+    print(x)
+```
+
+
+```python
+f(3)
+```
+
+    3
+
+
+
+```python
+f("hi")
+```
+
+    hi
+
+
+Interact的用法(函數,變數＝起始值)
+
+
+```python
+interact(f,x=3)
+```
+
+
+    interactive(children=(IntSlider(value=3, description='x', max=9, min=-3), Output()), _dom_classes=('widget-int…
+
+
+
+
+
+    <function __main__.f(x)>
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "Android資安-行動應用程式於畫面擷取時應主動警示使用者"
+date:   2019-08-08 12:55:42 +0800
+categories: jekyll update
+---
+加入以下的程式碼可以禁止行動應用程式使用截圖功能,並於切換按鈕時,行動應用裝置會呈現空白的畫面,避免於背景時被截圖造成個資外洩。
+
+**Kotlin寫法**  
+再OnCreate加入
+
+{% highlight ruby %}
+this.window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+{% endhighlight %}
+
+**Java寫法**  
+再OnCreate加入
+
+{% highlight ruby %}
+this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+{% endhighlight %}
+
+**C# Xamarin Android寫法**  
+再OnCreate加入
+{% highlight ruby %}
+Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
+{% endhighlight %}
+
+加入程式碼之後呈現的效果如下圖  
+![禁止截圖提示](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/Android01.jpg)  
+
+![背景狀態畫面](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/Android02.jpg)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

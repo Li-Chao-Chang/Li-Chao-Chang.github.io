@@ -1,0 +1,103 @@
+---
+layout: post
+title:  "Git Cheat Sheet進階操作篇"
+date:   2020-03-31 16:25:21 +0800
+categories: jekyll update
+---
+---
+# 目錄  
++ [Diff](#1)  
++ [Cherry Pick](#2)
++ [Merge](#3)
++ [Rebase](#4)
++ [刪除還原](#5)  
+
+---
+
+<font color="#0473E2" id='1'>Git Diff</font> 
+- HEAD與Commit ID比對檔案內容差異  
+{% highlight ruby %}
+git diff Commit ID
+{% endhighlight %}
+- 列出差異檔案名稱  
+{% highlight ruby %}
+git diff Commit ID --name-only
+{% endhighlight %}
+- 兩個Commit ID比較差異  
+{% highlight ruby %}
+git diff Commit ID Commit ID
+{% endhighlight %}
+- 將填入兩個Commit ID將差異Output至test.txt存檔至HEAD目錄  
+{% highlight ruby %}
+git diff a123d31 be94t76 --name-only > test.txt
+{% endhighlight %}
+- 將填入兩個Commit ID,產出異動檔案,並壓縮成files.tar  
+{% highlight ruby %}
+git archive --output=files.tar HEAD $(git diff a123d31 be94t76 --name-only --diff-filter=ACMRT HEAD) 
+{% endhighlight %}
+- 將HEAD裡的全部檔案壓縮成files.tar  
+{% highlight ruby %}
+git archive --output=files.tar HEAD $(git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT HEAD)
+{% endhighlight %}
+
+<font color="#0473E2" id='2'>Git Cherry Pick</font> 
+- 將其他Commit ID的節點複製過來  
+{% highlight ruby %}
+#先查詢log取得CommitID
+git log --oneline
+#如果要查特定分支上的Commit ID
+git log --oneline Branch名稱
+#下一步
+#開始pick
+git cherry-pick CommitID_1
+#可多個pick
+git cherry-pick CommitID_1 CommitID_2 CommitID_3
+{% endhighlight %}
+
+<font color="#0473E2" id='3'>Git Merge</font> 
+- 合併
+{% highlight ruby %}
+git merge branch名字
+#之後會進入vi編輯畫面
+#輸入:wq Enter離開
+{% endhighlight %}
+- 取消合併
+{% highlight ruby %}
+git reset HEAD^ --hard
+{% endhighlight %}
+
+<font color="#0473E2" id='4'>Git Rebase</font> 
+- 另一種合併  
+{% highlight ruby %}
+#rebase cat
+git rebase cat
+{% endhighlight %}  
+- 合併前  
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/node_rebase.jpg)  
+- 合併後
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/ui_rebase.jpg)
+- 取消rebase合併  
+{% highlight ruby %}
+#先查詢reflog取得commit ID
+git reflog
+#執行還原rebase
+git reset 1841e7c --hard
+{% endhighlight %}  
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/cmd_rebase.jpg)  
+
+<font color="#0473E2" id='5'>Git 復原被刪除的Commit</font> 
+- 先查詢要還原到的Commit ID  
+{% highlight ruby %}
+git reflog
+{% endhighlight %}  
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/cmd_resetDelete.jpg) 
+- Reset Commit  
+{% highlight ruby %}
+git reset 57d08ad --hard
+{% endhighlight %}  
+![圖片](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/201908081255/ui_resetDelete.jpg)    
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

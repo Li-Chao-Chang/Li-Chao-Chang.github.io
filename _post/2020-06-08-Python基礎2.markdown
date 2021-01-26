@@ -1,0 +1,503 @@
+---
+layout: post
+title:  "Python基礎2"
+date:   2020-06-08 10:22:35 +0800
+categories: jekyll update
+---
+# Python函式練習
+
+
+```python
+def say_hi(name,place):
+    message = "我是{},來自{}!!".format(name,place)
+    return message
+```
+
+
+```python
+say_hi("Ivan","Taiwan")
+```
+
+
+
+
+    '我是Ivan,來自Taiwan!!'
+
+
+
+# List切割練習
+
+
+```python
+L =[1,2,3,4,5,6,7]
+```
+
+
+```python
+L
+```
+
+
+
+
+    [1, 2, 3, 4, 5, 6, 7]
+
+
+
+
+```python
+L[0]
+```
+
+
+
+
+    1
+
+
+
+
+```python
+L[4]
+```
+
+
+
+
+    5
+
+
+
+
+```python
+L[:]
+```
+
+
+
+
+    [1, 2, 3, 4, 5, 6, 7]
+
+
+
+
+```python
+L[1:3]
+```
+
+
+
+
+    [2, 3]
+
+
+
+
+```python
+L[:3]
+```
+
+
+
+
+    [1, 2, 3]
+
+
+
+
+```python
+L[0:]
+```
+
+
+
+
+    [1, 2, 3, 4, 5, 6, 7]
+
+
+
+# 字串切割
+
+
+```python
+str = "Hello"
+```
+
+
+```python
+str[1:]
+```
+
+
+
+
+    'ello'
+
+
+
+
+```python
+strChinese = "大家好啊"
+```
+
+
+```python
+strChinese[1:3]
+```
+
+
+
+
+    '家好'
+
+
+
+
+```python
+strChinese[0]
+```
+
+
+
+
+    '大'
+
+
+
+# List快速生成
+
+
+```python
+list(range(10))
+```
+
+
+
+
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+list的L只能用小寫
+
+
+```python
+List(range(10))
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-29-c3307e3cf0ce> in <module>
+    ----> 1 List(range(10))
+    
+
+    NameError: name 'List' is not defined
+
+
+
+```python
+list(range(2,10))
+```
+
+
+
+
+    [2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+
+```python
+list(("ABCDEFG"))
+```
+
+
+
+
+    ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+
+
+
+```python
+a = 0
+b = 10
+c = list(range(a,b))
+c
+```
+
+
+
+
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+# for迴圈
+
+
+```python
+L = [1,2,3,4,5]
+for i in L:
+    print (i)
+```
+
+    1
+    2
+    3
+    4
+    5
+
+
+
+```python
+for i in range(0,3):
+    print(i)
+```
+
+    0
+    1
+    2
+
+
+
+```python
+L = ["大","家","好"]
+for i in L:
+    print(i)
+```
+
+    大
+    家
+    好
+
+
+
+```python
+for i in range(1,5):
+    print("*"*i)
+```
+
+    *
+    **
+    ***
+    ****
+
+
+# 字串中找關鍵字
+
+
+```python
+keyword = "好"
+word = "大家好"
+```
+
+
+```python
+keyword in word
+```
+
+
+
+
+    True
+
+
+
+
+```python
+keyword2 = "你"
+keyword2 in word
+```
+
+
+
+
+    False
+
+
+
+
+```python
+L = [1,2,3,4,5]
+2 in L
+```
+
+
+
+
+    True
+
+
+
+
+```python
+6 in L
+```
+
+
+
+
+    False
+
+
+
+# if條件判斷
+
+
+```python
+a = 10
+if(a > 1):
+    print("Yes")
+```
+
+    Yes
+
+
+
+```python
+key="好"
+key2 = "你"
+word = input(">>")
+if(key in word):
+    print("Yes!")
+elif(key2 in word):
+    print("Yes!!")
+else:
+    print("NO")
+```
+
+    >>大家好
+    Yes!
+
+
+
+```python
+key="好"
+key2 = "你"
+word = input(">>")
+if(key in word):
+    print("Yes!")
+elif(key2 in word):
+    print("Yes!!")
+else:
+    print("NO")
+```
+
+    >>你是誰
+    Yes!!
+
+
+
+```python
+key="好"
+key2 = "你"
+word = input(">>")
+if(key in word):
+    print("Yes!")
+elif(key2 in word):
+    print("Yes!!")
+else:
+    print("NO")
+```
+
+    >>我是誰
+    NO
+
+
+# 讀取套件
+
+
+```python
+import numpy as np
+np.sin(3)
+```
+
+
+
+
+    0.1411200080598672
+
+
+
+
+```python
+from numpy import cos
+```
+
+
+```python
+cos(3)
+```
+
+
+
+
+    -0.9899924966004454
+
+
+
+# 數據分析標準動作
+
+
+```python
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+
+```python
+np.pi
+```
+
+
+
+
+    3.141592653589793
+
+
+
+
+```python
+plt.plot([1,2,3,4,5,6])
+```
+
+
+
+
+    [<matplotlib.lines.Line2D at 0x112691b10>]
+
+
+
+
+![png](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/20200608/PythonSecordWeek/output_48_1.png)
+
+
+
+```python
+plt.plot(np.random.randn(100))
+```
+
+
+
+
+    [<matplotlib.lines.Line2D at 0x113dc4ad0>]
+
+
+
+
+![png](https://github.com/Li-Chao-Chang/Blog/raw/master/_posts/images/20200608/PythonSecordWeek/output_49_1.png)
+
+
+
+```python
+
+```
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

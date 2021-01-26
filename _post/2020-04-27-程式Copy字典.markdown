@@ -1,0 +1,69 @@
+---
+layout: post
+title:  "程式Copy字典"
+date:   2020-04-27 13:50:21 +0800
+categories: jekyll update
+---
+<font color="#0473E2" id='1'>Linq DataTable Select Specific Column Name</font>  
+{% highlight ruby %}
+DataTable dt.Select($"ColumnName='{ABC}'");
+{% endhighlight %}
+
+<font color="#0473E2" id='1'>Apply For C#FrameWork4.0 TLS1.2 / 1.1 / 1.0</font>
+{% highlight ruby %}
+ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)768 | SecurityProtocolType.Tls;
+{% endhighlight %}
+
+<font color="#0473E2" id='1'>Linq 找出List< Tready >裡,利用reflection找出子類別為AttachTreaty</font>  
+{% highlight ruby %}
+List< AttachTreaty > modelRider = (from m in List< Tready >
+                        where m.GetType().Equals(typeof(AttachTreaty))
+                        select (AttachTreaty)m).ToList();
+{% endhighlight %}
+
+<font color="#0473E2" id='1'>Linq ＤataTable To Model</font>  
+{% highlight ruby %}
+usercombo = dbRepository.tbUserComboMain.Where(x => x.Prop_AgentID == AgentID).OrderByDescending(x => x.ModifyDate).
+    Select(x => new PropModel()
+    {
+        propId = x.Prop_ID,
+        propNo = x.Prop_Name,
+        propType = "C",
+        dateTime = x.ModifyDate
+    }).ToList();
+{% endhighlight %}
+
+<font color="#0473E2" id='1'>Linq 比較Ａ,B 兩個List Model,保留Ａ比Ｂ大的部分</font>  
+{% highlight ruby %}
+tempAppPropModel = (from x in appPropModel
+                    join y in webPropModel on
+                    //一個比較的參數
+                    x.propId equals y.propId into webPropModel2
+                    //兩個比較的參數
+                    //new { propId = x.propId, dateTime = x.dateTime } equals new { propId = y.propId, dateTime = y.dateTime }
+                    rom y in webPropModel2.DefaultIfEmpty()
+                    where (y == null) || (x.dateTime > y.dateTime)
+                    select x).ToList();
+{% endhighlight %}
+
+<font color="#0473E2" id='1'>取交集(A和B都有),使用IEqualityComparer</font>  
+{% highlight ruby %}
+public class PropModelComparer : IEqualityComparer< PropModel >
+{
+    public bool Equals(PropModel x, PropModel y)
+    {
+        return x.propId == y.propId;
+    }
+
+    public int GetHashCode(PropModel obj)
+    {
+        return obj.GetHashCode();
+    }
+}
+
+appPropModel.AddRange(appDelModel.Intersect(webPropModel, new PropModelComparer()).ToList());
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

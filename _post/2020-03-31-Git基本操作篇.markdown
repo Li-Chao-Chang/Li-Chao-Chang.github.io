@@ -1,0 +1,175 @@
+---
+layout: post
+title:  "Git Cheat Sheet基本操作篇"
+date:   2020-03-31 15:25:21 +0800
+categories: jekyll update
+---
+---
+# 目錄  
++ [Status](#1)  
++ [Commit操作](#2)
++ [撤銷Commit](#3)
++ [Revert Commit](#4)
++ [Push](#5)
++ [Pull](#6)
++ [Fetch](#7)
++ [CheckOut](#8)
++ [Tag](#9)
++ [Branch](#10) 
++ [Log](#11) 
+
+---
+<font color="#0473E2" id='1'>Git Status</font> 
+{% highlight ruby %}
+#觀察目前狀態
+git status
+{% endhighlight %}
+
+<font color="#0473E2" id='2'>Git Commit</font> 
+- 將檔案加入至暫存區     
+{% highlight ruby %}
+#觀察暫存區track,得到路徑檔名
+git status
+#單一檔案
+git add 路徑檔名
+#全部檔案
+git add -A
+#或是
+git add *
+{% endhighlight %} 
+- 填入Commit Message 
+{% highlight ruby %}
+git commit -m "Commit說明文字XXXX"
+{% endhighlight %} 
+
+<font color="#0473E2" id='3'>撤消Commit操作</font> 
+- 將檔案加入至暫存區     
+{% highlight ruby %}
+#觀察暫存區track,得到路徑檔名
+git status
+#要撤消的檔案
+git reset HEAD 路徑檔名
+{% endhighlight %} 
+
+<font color="#0473E2" id='4'>Revert Commit操作</font> 
+- 查詢log,搜尋要revert的Commit ID     
+{% highlight ruby %}
+git log --oneline 
+#或是
+git reflog
+{% endhighlight %} 
+- revert指令  
+{% highlight ruby %}
+#填入要revert的CommitID
+git revert CommitID
+#或是revert上一個commit的話可使用HEAD
+git revert HEAD
+#revert此HEAD,CommitID的上一個,或上上上一個
+#上一個
+git revert HEAD^
+#上二個
+git revert HEAD^^
+#上三個
+git revert HEAD~3 
+{% endhighlight %}
+- Vi介面操作 
+{% highlight ruby %}
+#輸入i進入insert mode
+i
+{% endhighlight %}
+- 打完註解後存檔 
+- 按下ESC
+{% highlight ruby %}
+#輸入:wq Enter結束
+:wq
+{% endhighlight %}
+
+<font color="#0473E2" id='5'>Git Push</font> 
+{% highlight ruby %}
+# Push至remote
+git push
+{% endhighlight %} 
+
+<font color="#0473E2" id='6'>Git Pull</font> 
+- pull會把檔案抓下來且自動進行merge  
+{% highlight ruby %}
+git pull
+{% endhighlight %} 
+
+<font color="#0473E2" id='7'>Git Fetch</font> 
+- fetch會把檔案抓下來但不會merge  
+{% highlight ruby %}
+git fetch
+{% endhighlight %} 
+
+<font color="#0473E2" id='8'>Git CheckOut</font> 
+- 將HEAD移動至指定Commit ID  
+{% highlight ruby %}
+git checkout Commit ID
+{% endhighlight %} 
+
+<font color="#0473E2" id='9'>Git Tag</font> 
+- 輕量型標籤  
+{% highlight ruby %}
+git tag 標籤名稱 Commit ID
+#或是
+git tag 標籤名稱 HEAD
+{% endhighlight %}
+- 附註說明標籤
+{% highlight ruby %}
+#-a代表使用附註型tag,-m代表所要登打的說明
+git tag 標籤名稱 Commit ID -a -m "附註內容xxx"
+{% endhighlight %}
+- 顯示tag資訊  
+{% highlight ruby %}
+git show 標籤名稱
+{% endhighlight %}
+
+<font color="#0473E2" id='10'>Git branch</font> 
+- 列出分支  
+{% highlight ruby %}
+git branch
+{% endhighlight %}
+- 建立分支  
+{% highlight ruby %}
+git branch 名字
+{% endhighlight %}
+- 分支改名  
+{% highlight ruby %}
+git branch -m 名字 新名字
+{% endhighlight %}
+- 刪除分支  
+{% highlight ruby %}
+#-d會跳出詢問是否刪除
+git branch -d 名字
+#強制刪除 -D
+git branch -D 名字
+{% endhighlight %}
+- 切換到分支  
+{% highlight ruby %}
+git checkout 名字
+#加入-b參數,如果分支不存在則建立在自動切換
+git checkout -b 名字
+{% endhighlight %}
+
+<font color="#0473E2" id='11'>Git Log</font>  
+ - Log  
+{% highlight ruby %}
+git log
+{% endhighlight %}
+- 找尋特定作者  
+{% highlight ruby %}
+git log --oneline --author="IvanLi"
+{% endhighlight %}
+- 找尋特定Commmit文字
+{% highlight ruby %}
+git log --oneline --grep="test"
+{% endhighlight %}
+- 找尋特定的檔案編輯紀錄  
+{% highlight ruby %}
+git log xxxxx.cs
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

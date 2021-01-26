@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "Git Cheat Sheet工作常用篇"
+date:   2020-03-30 14:12:30 +0800
+categories: jekyll update
+---
+**匯出差異文字檔**
+
+填入匯出的起迄Short Commit ID,產出test.text檔案
+
+{% highlight ruby %}
+git diff f03d34e bf98076 --name-only > test.txt 
+{% endhighlight %}
+
+**匯出差異檔案**
+
+填入要匯出的起迄Short Commit ID,產出異動檔案,並壓縮成files.tar
+
+{% highlight ruby %}
+git archive --output=files.tar HEAD $(git diff 84a8230 2752266 --name-only --diff-filter=ACMRT HEAD) 
+{% endhighlight %}
+
+**匯出檔案**
+
+將HEAD裡的全部檔案壓縮成files.tar
+
+{% highlight ruby %}
+git archive --output=files.tar HEAD $(git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT HEAD)
+{% endhighlight %}
+
+**刪除Remote上Push**
+
+{% highlight ruby %}
+git reset --hard HEAD~1
+git push --force
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/

@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "iOS資安-行動應用程式安全敏感性資料儲存限制(螢幕自動截圖)"
+date:   2019-08-08 17:00:42 +0800
+categories: jekyll update
+---
+內容包含檢測應用程式中是否有作業系統中功能的濫用，或未能使用作業系統所提供的安全控制。它可能包括螢幕自動截圖、平台權限、TouchID 的誤用、KeyChain或行動裝置系統的其他一些安全控制。iOS與Andorid行動用程式檢測的項目不一樣,請特別注意!!  
+
+**C# Xamarin iOS寫法**  
+首先打開你的AppDelegate  
+然後在裡面先宣告一下UIImageView
+{% highlight ruby %}
+private static UIImageView MybgImg;
+{% endhighlight %}  
+當iOS進行背景時會呼叫LifeCycle中的DidEnterBackground的method,下一步要在裡面加入以下程式碼  
+{% highlight ruby %}MybgImg = new UIImageView(UIScreen.MainScreen.Bounds);//設定圖片的尺寸
+MybgImg.Image = UIImage.FromBundle("assets/landscape.png");//選擇一個圖片
+this.Window.AddSubview(MybgImg);//覆蓋主畫面
+{% endhighlight %}
+最後一步,當你從背景跳回前景時會呼叫LifeCycle中的WillEnterForeground的method  
+{% highlight ruby %}
+MybgImg.RemoveFromSuperview();//移除主畫面所覆蓋的圖片
+{% endhighlight %}  
+
+完成,透過這樣的方式,可以避免iOS螢幕snapshot的cache裡不會有行動應用程式主畫面的資訊。  
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
